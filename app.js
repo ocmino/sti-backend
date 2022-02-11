@@ -1,19 +1,19 @@
 const cors = require("cors")
 const express = require("express")
 
-const index = express()
+const app = express()
 const PORT = process.env.PORT || 3000
 
-index.use('/healthcheck', require('/routes/healthcheck.routes'));
-index.use(express.urlencoded({ extended: true }));
-index.use(cors())
+app.use('/healthcheck', require('/routes/healthcheck.routes'));
+app.use(express.urlencoded({ extended: true }));
+app.use(cors())
 
-index.get("/", (req, res)=>{
+app.get("/", (req, res)=>{
     headers={"http_status":200, "cache-control": "no-cache"}
     body={"status": "available"}
     res.status(200).send(body)
 })
 
-index.listen(PORT , ()=>{
+app.listen(PORT , ()=>{
     console.log('STARTED LISTENING ON PORT ${PORT}')
 });
