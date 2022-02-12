@@ -15,6 +15,6 @@ router.get('/', async (_req, res, _next) => {
         res.status(503).send();
     }
 });
-
+    
 module.exports = router;
 
